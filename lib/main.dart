@@ -27,7 +27,7 @@ class WeatherApp extends StatelessWidget {
                     .weathermodel!
                     .getThemeColor(),
       ),
-      home: HomeView(),
+      home: const HomeView(),
     );
   }
 }

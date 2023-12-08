@@ -23,7 +23,8 @@ class SearchView extends StatelessWidget {
             },
             onSubmitted: (data) async {
               cityName = data;
-
+              BlocProvider.of<WeatherCubit>(context)
+                  .getWeather(cityName: cityName!);
               BlocProvider.of<WeatherCubit>(context).cityName = cityName;
 
               Navigator.pop(context);

@@ -8,13 +8,11 @@ import 'package:project/widgets/noweather_info_body.dart';
 import 'package:project/widgets/weather_info_body.dart';
 
 class HomeView extends StatelessWidget {
-  WeatherModel? weatherData;
+  const HomeView({super.key});
 
-  HomeView({super.key});
   @override
   Widget build(BuildContext context) {
-    weatherData = BlocProvider.of<WeatherCubit>(context).weathermodel;
-
+    WeatherModel? weatherData;
     return Scaffold(
         appBar: AppBar(
           actions: [
@@ -28,6 +26,7 @@ class HomeView extends StatelessWidget {
             ),
           ],
           title: const Text('Weather App'),
+          // backgroundColor: Colors.blue,
         ),
         body:
             BlocBuilder<WeatherCubit, WeatherState>(builder: (context, state) {
@@ -36,7 +35,8 @@ class HomeView extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (state is WeatherSuccessState) {
-            return WeatherInfoBody(weatherData: weatherData);
+            weatherData = BlocProvider.of<WeatherCubit>(context).weathermodel;
+            return WeatherInfoBody(weatherData: weatherData!);
           } else if (state is WeatherFailureState) {
             return const Center(
               child: Text("there is something wrong with the input"),

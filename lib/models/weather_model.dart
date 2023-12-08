@@ -49,6 +49,7 @@ class WeatherModel {
       return 'assets/images/cloudy.png';
     } else if (weatherStateName == 'Patchy rain possible' ||
         weatherStateName == 'Heavy Rain' ||
+        weatherStateName == 'Moderate rain' ||
         weatherStateName == 'Showers	') {
       return 'assets/images/rainy.png';
     } else if (weatherStateName == 'Thundery outbreaks possible' ||
@@ -86,11 +87,12 @@ class WeatherModel {
     } else if (weatherStateName == 'Thundery outbreaks possible' ||
         weatherStateName == 'Moderate or heavy snow with thunder' ||
         weatherStateName == 'Patchy light snow with thunder' ||
+        weatherStateName == 'Moderate rain' ||
         weatherStateName == 'Moderate or heavy rain with thunder' ||
         weatherStateName == 'Patchy light rain with thunder') {
       return Colors.deepPurple;
     } else {
-      return Colors.orange;
+      return Colors.blue;
     }
   }
 }
