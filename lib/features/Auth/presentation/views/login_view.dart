@@ -35,7 +35,6 @@ class _LoginViewState extends State<LoginView> {
           isLoading = true;
         } else if (state is LoginSuccesState) {
           isLoading = false;
-
           Navigator.pushNamed(context, HomeView.id, arguments: email);
         } else if (state is LoginFailureState) {
           isLoading = false;
@@ -46,106 +45,134 @@ class _LoginViewState extends State<LoginView> {
         return ModalProgressHUD(
           inAsyncCall: isLoading,
           child: Scaffold(
-            backgroundColor: kPrimaryColor,
-            body: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Form(
-                key: formkey,
-                child: ListView(
-                  children: [
-                    const SizedBox(
-                      height: 75,
-                    ),
-                    Image.asset(
-                      kloge,
-                      height: 200,
-                      fit: BoxFit.fitHeight,
-                    ),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Weather App',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Pacifico',
-                            fontSize: 32,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 75,
-                    ),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Login',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    CustomFormTextField(
-                      onchange: (data) {
-                        email = data;
-                      },
-                      hinttext: 'Email',
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    CustomFormTextField(
-                      obscure: true,
-                      onchange: (data) {
-                        passward = data;
-                      },
-                      hinttext: 'Passward',
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    CustomButtom(
-                      onTap: () async {
-                        if (formkey.currentState!.validate()) {
-                          BlocProvider.of<AuthBloc>(context).add(
-                              LoginEvent(email: email!, passward: passward!));
-                        } else {}
-                      },
-                      buttomname: 'Login',
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'Dont\'t have an account',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, RegisterView.id);
-                          },
-                          child: const Text(
-                            '   Regiter',
+            body: Container(
+              // إضافة Gradient للخلفية
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color(0xFF4A90E2), // أزرق فاتح
+                    Color(0xFF50C9CE), // سماوي
+                  ],
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Form(
+                  key: formkey,
+                  child: ListView(
+                    children: [
+                      const SizedBox(height: 50),
+                      // اللوجو
+                      Image.asset(
+                        kloge,
+                        height: 150, // تقليل حجم اللوجو
+                        fit: BoxFit.contain,
+                      ),
+                      const SizedBox(height: 20),
+                      // نص الترحيب
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Welcome To Weather App',
                             style: TextStyle(
-                              color: Color(0xffC7EDE6),
+                              color: Colors.white,
+                              fontFamily: 'Pacifico',
+                              fontSize: 32,
+                              shadows: [
+                                Shadow(
+                                  color: Colors.black26,
+                                  offset: Offset(2, 2),
+                                  blurRadius: 4,
+                                ),
+                              ],
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                      const SizedBox(height: 50),
+                      // نص "Login"
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Login',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'Pacifico',
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                              shadows: [
+                                Shadow(
+                                  color: Colors.black26,
+                                  offset: Offset(2, 2),
+                                  blurRadius: 4,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      // TextField للإيميل
+                      CustomFormTextField(
+                        onchange: (data) {
+                          email = data;
+                        },
+                        hinttext: 'Email',
+                      ),
+                      const SizedBox(height: 16),
+                      // TextField للباسورد
+                      CustomFormTextField(
+                        obscure: true,
+                        onchange: (data) {
+                          passward = data;
+                        },
+                        hinttext: 'Password',
+                      ),
+                      const SizedBox(height: 30),
+                      // زرار الـ Login
+                      CustomButtom(
+                        onTap: () async {
+                          if (formkey.currentState!.validate()) {
+                            BlocProvider.of<AuthBloc>(context).add(
+                              LoginEvent(email: email!, passward: passward!),
+                            );
+                          }
+                        },
+                        buttomname: 'Login',
+                      ),
+                      const SizedBox(height: 20),
+                      // نص التسجيل
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Don't have an account? ",
+                            style: TextStyle(
+                              color: Colors.white70,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(context, RegisterView.id);
+                            },
+                            child: const Text(
+                              'Register',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -1,5 +1,3 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
 
 class CustomFormTextField extends StatelessWidget {
@@ -13,6 +11,7 @@ class CustomFormTextField extends StatelessWidget {
   final bool? obscure;
   final String? hinttext;
   Function(String)? onchange;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -24,18 +23,23 @@ class CustomFormTextField extends StatelessWidget {
         return null;
       },
       onChanged: onchange,
+      style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
         hintText: hinttext,
-        hintStyle: const TextStyle(color: Colors.white),
-        border: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.white,
-          ),
+        hintStyle: const TextStyle(color: Colors.white70),
+        filled: true,
+        fillColor: Colors.white.withValues(alpha: 0.2),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
         ),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.white,
-          ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: Colors.white54),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: Colors.white),
         ),
       ),
     );

@@ -33,7 +33,7 @@ class WeatherApp extends StatelessWidget {
             create: (context) => WeatherCubit(weatherservice: WeatherService()),
           ),
           BlocProvider<AuthBloc>(
-            create: (context) => AuthBloc(), // هنا بنوفر الـ AuthBloc
+            create: (context) => AuthBloc(),
           ),
         ],
         child: Builder(
