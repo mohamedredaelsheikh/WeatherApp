@@ -85,21 +85,38 @@ Weather_app/
 The app uses the following packages:
 
 flutter_bloc: ^8.1.3 - For state management.
+
 firebase_core: ^3.13.0 - For Firebase integration.
+
 firebase_auth: ^5.5.2 - For user authentication.
+
 http: ^1.1.2 - For making API requests to fetch weather data.
+
 modal_progress_hud_nsn: ^0.5.1 - For showing loading indicators.
-provider: ^6.1.1 - For dependency injection (if used).
+
+
+
 simple_circular_progress_bar: ^1.0.2 - For custom loading indicators.
+
 cupertino_icons: ^1.0.2 - For iOS-style icons.
-Supported Platforms
+
+##Supported Platforms
 Android: Fully supported.
+
 iOS: Fully supported.
+
 Web: Supported, but may require additional setup for index.html (see Flutter Web Initialization).
+
 #Additional Notes
-Weather API: The app fetches weather data using the http package. Ensure you have a valid API key and configure it in WeatherService. The app currently uses a placeholder API; replace it with your preferred weather API (e.g., OpenWeatherMap).
+
+Weather API: The app fetches weather data using the http package. Ensure you have a valid API key and configure it in WeatherService. The app currently uses a placeholder API; replace it with your preferred 
+weather API (e.g., OpenWeatherMap).
+
 Firebase Setup: If you encounter issues with Firebase, ensure the Firebase CLI is installed and configured properly. Run flutterfire configure to regenerate the firebase_options.dart file if needed.
+
 Web Support: For web builds, ensure flutter.js is loaded correctly in web/index.html. If you face issues like _flutter is not defined, check the index.html file and ensure the build is clean (flutter clean then flutter build web).
+
 Fonts: The app uses the Pacifico font, which is included in the assets/fonts/ directory.
-Contributing
+##Contributing
+
 Feel free to fork the repository, make changes, and submit a pull request. For major changes, please open an issue first to discuss what you would like to change.
