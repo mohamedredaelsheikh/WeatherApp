@@ -52,33 +52,6 @@ Add the API key to the WeatherService class in lib/features/home/data/remote_dat
 Connect a device, emulator, or browser, then run:
 flutter run
 
-Weather_app/
-├── lib/
-│   ├── core/                           # Constants and utilities
-│   │   └── show_snack_bar.dart         # Utility for showing SnackBar
-│   ├── features/                       # Feature modules
-│   │   ├── Auth/                       # Authentication feature
-│   │   │   ├── presentation/           # UI and logic for Auth
-│   │   │   │   ├── manager/            # BLoC for Auth
-│   │   │   │   │   └── AuthBloc/       # AuthBloc, events, and states
-│   │   │   │   ├── views/              # Auth screens (Login, Register)
-│   │   │   │   └── widgets/            # Reusable widgets (CustomButton, CustomTextField)
-│   │   └── home/                       # Weather feature
-│   │       ├── data/                   # Data layer
-│   │       │   ├── models/             # Data models (WeatherModel)
-│   │       │   └── remote_data_source/ # API services
-│   │       │       └── services/       # WeatherService for API calls
-│   │       ├── presentation/           # UI and logic for Weather
-│   │       │   ├── manager/            # Cubit for Weather
-│   │       │   │   └── cubits/         # WeatherCubit and states
-│   │       │   ├── views/              # Weather screens (HomeView, SearchView)
-│   │       │   └── widgets/            # Reusable widgets (WeatherInfoBody, NoWeatherInfoBody)
-│   ├── firebase_options.dart           # Firebase configuration
-│   └── main.dart                       # Entry point of the app
-├── android/                            # Android-specific files
-├── ios/                                # iOS-specific files
-├── web/                                # Web-specific files (e.g., index.html)
-└── pubspec.yaml                        # Dependencies and project metadata
 
 
 #Dependencies
@@ -117,6 +90,8 @@ Firebase Setup: If you encounter issues with Firebase, ensure the Firebase CLI i
 Web Support: For web builds, ensure flutter.js is loaded correctly in web/index.html. If you face issues like _flutter is not defined, check the index.html file and ensure the build is clean (flutter clean then flutter build web).
 
 Fonts: The app uses the Pacifico font, which is included in the assets/fonts/ directory.
+
+
 ##Contributing
 
 Feel free to fork the repository, make changes, and submit a pull request. For major changes, please open an issue first to discuss what you would like to change.
