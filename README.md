@@ -80,7 +80,8 @@ Weather_app/
 ├── web/                                # Web-specific files (e.g., index.html)
 └── pubspec.yaml                        # Dependencies and project metadata
 
-Dependencies
+
+#Dependencies
 The app uses the following packages:
 
 flutter_bloc: ^8.1.3 - For state management.
@@ -95,7 +96,7 @@ Supported Platforms
 Android: Fully supported.
 iOS: Fully supported.
 Web: Supported, but may require additional setup for index.html (see Flutter Web Initialization).
-Additional Notes
+#Additional Notes
 Weather API: The app fetches weather data using the http package. Ensure you have a valid API key and configure it in WeatherService. The app currently uses a placeholder API; replace it with your preferred weather API (e.g., OpenWeatherMap).
 Firebase Setup: If you encounter issues with Firebase, ensure the Firebase CLI is installed and configured properly. Run flutterfire configure to regenerate the firebase_options.dart file if needed.
 Web Support: For web builds, ensure flutter.js is loaded correctly in web/index.html. If you face issues like _flutter is not defined, check the index.html file and ensure the build is clean (flutter clean then flutter build web).
