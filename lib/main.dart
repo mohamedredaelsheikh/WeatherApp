@@ -10,8 +10,6 @@ import 'package:project/features/home/data/remote_data_source/services/weather_s
 import 'package:project/features/home/presentation/views/home_view.dart';
 import 'package:project/features/home/presentation/views/search_view.dart';
 
-import 'features/home/presentation/manager/cubits/weather_cubit/weather_states.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -38,8 +36,8 @@ class WeatherApp extends StatelessWidget {
             create: (context) => AuthBloc(), // هنا بنوفر الـ AuthBloc
           ),
         ],
-        child: BlocBuilder<WeatherCubit, WeatherState>(
-          builder: (context, state) {
+        child: Builder(
+          builder: (context) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
@@ -49,13 +47,12 @@ class WeatherApp extends StatelessWidget {
                       ? Colors.blue
                       : BlocProvider.of<WeatherCubit>(context).appBarColor,
                 ),
-                fontFamily: 'pacifico',
               ),
               routes: {
                 LoginView.id: (context) => const LoginView(),
                 RegisterView.id: (context) => const RegisterView(),
                 SearchView.id: (context) => SearchView(),
-                HomeView.id: (context) => HomeView(state: state),
+                HomeView.id: (context) => const HomeView(),
               },
               initialRoute: LoginView.id,
             );

@@ -7,48 +7,57 @@ import 'package:project/features/home/presentation/widgets/noweather_info_body.d
 import 'package:project/features/home/presentation/widgets/weather_info_body.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key, required this.state});
-  final WeatherState state;
+  const HomeView({
+    super.key,
+  });
+
   static String id = 'HomeView';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return SearchView();
-                }));
-              },
-              icon: const Icon(Icons.search),
-            ),
-          ],
-          title: const Text(
-            'Weather App',
-            style: TextStyle(
-              fontFamily: 'Pacifico',
-              fontSize: 32,
-            ),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return SearchView();
+              }));
+            },
+            icon: const Icon(Icons.search),
           ),
-          // backgroundColor: Colors.blue,
+        ],
+        title: const Text(
+          'Weather App',
+          style: TextStyle(
+            fontFamily: 'Pacifico',
+            fontSize: 32,
+          ),
         ),
-        body: state is WeatherLoadingState
-            ? const Center(child: CircularProgressIndicator())
-            : state is WeatherSuccessState
-                ? WeatherInfoBody(
-                    weatherData:
-                        BlocProvider.of<WeatherCubit>(context).weathermodel!)
-                : state is WeatherFailureState
-                    ? const Center(
-                        child: Text(
-                          'there is something wrong with the input',
-                          style: TextStyle(
-                            fontFamily: 'Pacifico',
-                            fontSize: 20,
-                          ),
-                        ),
-                      )
-                    : const NoWeatherInfoBody());
+        // backgroundColor: Colors.blue,
+      ),
+      body: BlocBuilder<WeatherCubit, WeatherState>(
+        builder: (context, state) {
+          if (state is WeatherLoadingState) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is WeatherSuccessState) {
+            return WeatherInfoBody(
+              weatherData: BlocProvider.of<WeatherCubit>(context).weathermodel!,
+            );
+          } else if (state is WeatherFailureState) {
+            return const Center(
+              child: Text(
+                'there is something wrong with the input',
+                style: TextStyle(
+                  fontFamily: 'Pacifico',
+                  fontSize: 20,
+                ),
+              ),
+            );
+          } else {
+            return const NoWeatherInfoBody();
+          }
+        },
+      ),
+    );
   }
 }

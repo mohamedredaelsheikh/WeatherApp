@@ -17,7 +17,7 @@ class WeatherCubit extends Cubit<WeatherState> {
       appBarColor = getThemeColor();
       emit(WeatherSuccessState());
     } catch (e) {
-      emit(WeatherFailureState());
+      emit(WeatherFailureState(error: e.toString()));
     }
   }
 
