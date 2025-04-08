@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project/cubits/weather_cubit/weather_cubit.dart';
-import 'package:project/views/home_view.dart';
+import 'package:project/features/home/presentation/manager/cubits/weather_cubit/weather_cubit.dart';
+import 'package:project/features/home/presentation/views/home_view.dart';
 
 class SearchView extends StatelessWidget {
   String? cityName;

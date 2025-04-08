@@ -6,7 +6,7 @@ import 'package:project/core/show_snack_bar.dart';
 import 'package:project/features/Auth/presentation/manager/AuthBloc/auth_bloc.dart';
 import 'package:project/features/Auth/presentation/widgets/custombuttom.dart';
 import 'package:project/features/Auth/presentation/widgets/customtextfield.dart';
-import 'package:project/views/home_view.dart';
+import 'package:project/features/home/presentation/views/home_view.dart';
 
 class RegisterView extends StatefulWidget {
   static String id = 'RegisterView';

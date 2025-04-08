@@ -1,16 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project/cubits/weather_cubit/weather_cubit.dart';
+import 'package:project/features/home/presentation/manager/cubits/weather_cubit/weather_cubit.dart';
 import 'package:project/features/Auth/presentation/manager/AuthBloc/auth_bloc.dart';
 import 'package:project/features/Auth/presentation/views/login_view.dart';
 import 'package:project/features/Auth/presentation/views/register_view.dart';
 import 'package:project/firebase_options.dart';
-import 'package:project/services/weather_service.dart';
-import 'package:project/views/home_view.dart';
-import 'package:project/views/search_view.dart';
+import 'package:project/features/home/data/remote_data_source/services/weather_service.dart';
+import 'package:project/features/home/presentation/views/home_view.dart';
+import 'package:project/features/home/presentation/views/search_view.dart';
 
-import 'cubits/weather_cubit/weather_states.dart';
+import 'features/home/presentation/manager/cubits/weather_cubit/weather_states.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,6 +49,7 @@ class WeatherApp extends StatelessWidget {
                       ? Colors.blue
                       : BlocProvider.of<WeatherCubit>(context).appBarColor,
                 ),
+                fontFamily: 'pacifico',
               ),
               routes: {
                 LoginView.id: (context) => const LoginView(),

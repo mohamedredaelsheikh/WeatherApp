@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project/cubits/weather_cubit/weather_cubit.dart';
-import 'package:project/cubits/weather_cubit/weather_states.dart';
-import 'package:project/views/search_view.dart';
-import 'package:project/widgets/noweather_info_body.dart';
-import 'package:project/widgets/weather_info_body.dart';
+import 'package:project/features/home/presentation/manager/cubits/weather_cubit/weather_cubit.dart';
+import 'package:project/features/home/presentation/manager/cubits/weather_cubit/weather_states.dart';
+import 'package:project/features/home/presentation/views/search_view.dart';
+import 'package:project/features/home/presentation/widgets/noweather_info_body.dart';
+import 'package:project/features/home/presentation/widgets/weather_info_body.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key, required this.state});
@@ -27,7 +27,7 @@ class HomeView extends StatelessWidget {
           title: const Text(
             'Weather App',
             style: TextStyle(
-              fontFamily: 'pacifico',
+              fontFamily: 'Pacifico',
               fontSize: 32,
             ),
           ),
@@ -41,7 +41,13 @@ class HomeView extends StatelessWidget {
                         BlocProvider.of<WeatherCubit>(context).weathermodel!)
                 : state is WeatherFailureState
                     ? const Center(
-                        child: Text('there is something wrong with the input'),
+                        child: Text(
+                          'there is something wrong with the input',
+                          style: TextStyle(
+                            fontFamily: 'Pacifico',
+                            fontSize: 20,
+                          ),
+                        ),
                       )
                     : const NoWeatherInfoBody());
   }

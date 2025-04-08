@@ -7,7 +7,7 @@ import 'package:project/features/Auth/presentation/manager/AuthBloc/auth_bloc.da
 import 'package:project/features/Auth/presentation/views/register_view.dart';
 import 'package:project/features/Auth/presentation/widgets/custombuttom.dart';
 import 'package:project/features/Auth/presentation/widgets/customtextfield.dart';
-import 'package:project/views/home_view.dart';
+import 'package:project/features/home/presentation/views/home_view.dart';
 
 class LoginView extends StatefulWidget {
   static String id = 'LoginView';
