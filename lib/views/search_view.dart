@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project/cubits/weather_cubit/weather_cubit.dart';
+import 'package:project/views/home_view.dart';
 
 class SearchView extends StatelessWidget {
   String? cityName;
   SearchView({
     Key? key,
   }) : super(key: key);
-
+  static String id = 'SearchView';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +28,8 @@ class SearchView extends StatelessWidget {
                   .getWeather(cityName: cityName!);
               BlocProvider.of<WeatherCubit>(context).cityName = cityName;
 
-              Navigator.pop(context);
+              // Navigator.pushReplacementNamed(context, HomeView.id);
+              Navigator.pushNamed(context, HomeView.id);
             },
             decoration: InputDecoration(
               contentPadding:

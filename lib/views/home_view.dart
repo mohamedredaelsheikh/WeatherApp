@@ -9,6 +9,7 @@ import 'package:project/widgets/weather_info_body.dart';
 class HomeView extends StatelessWidget {
   const HomeView({super.key, required this.state});
   final WeatherState state;
+  static String id = 'HomeView';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +24,13 @@ class HomeView extends StatelessWidget {
               icon: const Icon(Icons.search),
             ),
           ],
-          title: const Text('Weather App'),
+          title: const Text(
+            'Weather App',
+            style: TextStyle(
+              fontFamily: 'pacifico',
+              fontSize: 32,
+            ),
+          ),
           // backgroundColor: Colors.blue,
         ),
         body: state is WeatherLoadingState
